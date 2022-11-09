@@ -24,12 +24,18 @@ def SaveResultArrayPickle(result):
     if(type(result) is not dict):
         print("The result must be a dictionary!")
         return
+
+    #prva iteracija
+    if(len(all_activities) == 0):
+        all_activities.append(result['activity_type'])
+        print("prva dodana")
+
     #dodaja nove vrste aktivnosti
-    for type in all_activities:
-        if(result['activity_type'] == type):
-            continue
-        else:
-            all_activities.append(result['activity_type'])
+    if result['activity_type'] in all_activities:
+        print("")
+    else:
+        all_activities.append(result['activity_type'])
+        print("Nov tip dodan")
 
     #shrani rezultat v polje in datoteko
     all_results.append(result)
@@ -91,6 +97,21 @@ def ReadFiles():
 
 
 #ReadFiles()
+nekaj = {
+    "activity_type": "novo"
+}
+novo = {
+    "activity_type": "druga aktivnost"
+}
+isto = {
+    "activity_type": "druga aktivnost"
+}
+SaveResultArrayPickle(nekaj)
+SaveResultArrayPickle(novo)
+SaveResultArrayPickle(isto)
+print(all_activities)
+
+# VSE PREBERI, VSE SHRANI, SHRANI V PICKLE TUDI IMENA??, SHRANI POSAMEZNE DATOTEKEs
 #foo()
 
 # Izhodna CSV datoteka naj vsebuje naslednje vsaj stolpce.
