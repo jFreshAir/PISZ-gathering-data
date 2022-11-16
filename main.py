@@ -305,8 +305,13 @@ def normalization(data_frame):
 
 
 def discretisize(data_frame):
+    print("ORIGINAL")
+    print(data_frame['num_of_hills'])
+
     data_frame['discretisized1'] = numpy.digitize(data_frame['num_of_hills'],
                                                   numpy.array([0.0, 2.5, 7.5, 10.0]))
+    print("DISKRETIZIRANO")
+    print(data_frame['discretisized1'])
 
     return data_frame
 
@@ -316,14 +321,14 @@ def allCategories():
 
 
 def task2():
-    # minMaxMeanMedianColumns()
-    # missingNumberColumns()
-    # allCategories()
+    minMaxMeanMedianColumns()
+    missingNumberColumns()
+    allCategories()
     # print(data_frame)
 
-    #intervalIdentification()
-    #addIntervalColumns()
-    #data_frame.to_pickle('C:\\FERI\\PISZ\\addedIntervalsData.pickle')
+    intervalIdentification()
+    addIntervalColumns()
+    data_frame.to_pickle('C:\\FERI\\PISZ\\addedIntervalsData.pickle')
 
     newStoredData = pd.read_pickle('C:\\FERI\\PISZ\\addedIntervalsData.pickle')
     new_data_frame = pd.DataFrame(data=newStoredData)
@@ -332,7 +337,7 @@ def task2():
     new_data_frame = normalization(new_data_frame)
     new_data_frame = discretisize(new_data_frame)
 
-    new_data_frame.to_csv('C:\FERI\PISZ\SportDataByType\AllNewData.csv')
+    #new_data_frame.to_csv('C:\FERI\PISZ\SportDataByType\AllNewData.csv')
 
     # print("št v POWER")
     # print(len(num_of_int_pw))
